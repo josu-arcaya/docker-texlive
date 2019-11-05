@@ -1,5 +1,8 @@
 services:
   - docker
 
-script:
-  - docker build -f bionic/Dockerfile -t texlive:bionic .
+jobs:
+  include:
+    - stage: build
+      script: docker build -f bionic/Dockerfile -t texlive:bionic .
+      script: docker build -f focal/Dockerfile -t texlive:focal .
