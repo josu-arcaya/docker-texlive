@@ -12,3 +12,5 @@ jobs:
         - docker build -f focal/Dockerfile -t $DOCKER_USERNAME/texlive:focal .
         - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin > /dev/null 2>&1
         - docker push $DOCKER_USERNAME/texlive:focal
+        - docker tag $DOCKER_USERNAME/texlive:focal $DOCKER_USERNAME/texlive:latest
+        - docker push $DOCKER_USERNAME/texlive:latest
