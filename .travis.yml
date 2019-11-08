@@ -3,12 +3,11 @@ services:
 
 jobs:
   include:
-    - stage: bionic
+    - stage: deploy
       script: 
         - docker build -f bionic/Dockerfile -t $DOCKER_USERNAME/texlive:bionic .
         - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin > /dev/null 2>&1
         - docker push $DOCKER_USERNAME/texlive:bionic
-    - stage: focal
       script: 
         - docker build -f focal/Dockerfile -t $DOCKER_USERNAME/texlive:focal .
         - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin > /dev/null 2>&1
