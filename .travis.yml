@@ -3,6 +3,6 @@ services:
 
 jobs:
   include:
-    - stage: deploy
+    - stage: test
       script: echo "parallel job 1"
       script: echo "parallel job 2"
